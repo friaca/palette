@@ -114,3 +114,9 @@ def CIEDE2000(Lab_1, Lab_2):
   
   dE_00 = math.sqrt(f_L**2 + f_C**2 + f_H**2 + R_T * f_C * f_H)
   return dE_00
+
+def de00_distance(color1, color2):
+  lab1 = xyz_to_lab(rgb_to_xyz(color1))
+  lab2 = xyz_to_lab(rgb_to_xyz(color2))
+
+  return CIEDE2000(lab1, lab2)
