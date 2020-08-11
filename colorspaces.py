@@ -1,4 +1,4 @@
-from helper import run_command, delete_file
+from helper import run_command
 
 def quantitize_image(filename, extension, colors):
   try:
@@ -8,9 +8,6 @@ def quantitize_image(filename, extension, colors):
 
 def generate_histogram(filename):
   try:
-    output = run_command(f'magick convert {filename} -format %c -depth 8 histogram:info:-', get_output=True)
-    delete_file(filename)
-
-    return output
+    return run_command(f'magick convert {filename} -format %c -depth 8 histogram:info:-', get_output=True)
   except Exception as e:
     print('Something went wrong')
