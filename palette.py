@@ -2,7 +2,7 @@ import sys
 from helper import run_command, delete_file
 from parse import parse_line, parse_args
 from colorspaces import quantitize_image, generate_histogram
-# from PIL import Image
+from PIL import Image
 
 def main():
   arguments = parse_args()
@@ -13,16 +13,20 @@ def main():
     quantitize_image(filename, extension, arguments.colors)
     imagick_output = generate_histogram(temp_file)
     delete_file(temp_file)
-  except Exception:
+  except:
     print('Something went wrong')
   else:
     output_lines = imagick_output.split('\n')
-    parsed_lines = [parse_line(line) for line in output_lines]
-    sorted_lines = sorted(parsed_lines, key=lambda l: int(l['frequency']), reverse=True)
-    # image = Image.new("RGB", (1000, 1000), "#FF0000")
+    parsed_colors = [parse_line(line) for line in output_lines]
+    sorted_colors = sorted(parsed_colors, key=lambda l: int(l['frequency']), reverse=True)
+    image = Image.new("RGB", (1000, 1000), "#FFFFFF")
 
-    for line in sorted_lines:
-      print(line)
+    for i in range(len(sorted_colors)):
+      initialX = (1000 // arguments.colors) * i
+      finalX = (1000 // arguments.colors) * (i + 1)
+      image.paste(sorted_colors[i]['hex'], [initialX, 0, finalX, 1000])
+
+    image.show()
 
 if __name__ == '__main__':
   main()
