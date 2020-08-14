@@ -18,8 +18,10 @@ pip install requirements.txt
 
 ## Usage
 
-```python pallete.py -i input [-c | --colors N] [-s | --with-source] -o output```
+```python pallete.py -i input [-c | --colors N] [-s | --with-source]  [-v | --value]-o output```
 
 - -c --colors: Defines the number of colors the palette will have, the default is 5.
 
 - -s --with-source: [Not working for now] If present, the output image will contain the source image
+
+- -v --value: Includes the hex value in every color block

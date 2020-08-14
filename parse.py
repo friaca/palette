@@ -14,6 +14,7 @@ def parse_args():
   parser.add_argument('-i', '--input', dest='input', type=str, help='input file', required=True)
   parser.add_argument('-c', '--colors', dest='colors', type=int, help='number of colors of palette', default=5)
   parser.add_argument('-s', '--with-source', dest='source', help='save the palette with the source image', action='store_true')
+  parser.add_argument('-v', '--value', dest='value', help='includes the color hex code in the image', action='store_true')
   parser.add_argument('-o', '--output', dest='output', type=str, help='output path', required=True)
 
   arguments = parser.parse_args()
