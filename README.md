@@ -22,4 +22,4 @@ pip install requirements.txt
 
 - -c --colors: Defines the number of colors the palette will have, the default is 5.
 
-- -s --with-source: If present, the output image will contain the source image
+- -s --with-source: [Not working for now] If present, the output image will contain the source image
