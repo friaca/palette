@@ -32,7 +32,11 @@ def main():
       finalX = (size //  arguments.colors) * (i + 1)
       image.paste(sorted_colors[i]['hex'], [initialX, 0, finalX, size])
 
-    image.show()
+    try:
+      output, extension = arguments.output.rsplit('.', 1)
+      image.save(f'{output}_palette.{extension}')
+    except OSError as oserror:
+      print(f'Couldn\'t save the image for some reason\n{oserrror.strerror}') 
 
 if __name__ == '__main__':
   main()
