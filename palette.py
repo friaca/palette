@@ -2,11 +2,7 @@ import sys
 from helper import run_command, delete_file
 from parse import parse_line, parse_args
 from colorspaces import quantitize_image, generate_histogram
-
-try:
-  from PIL import Image
-except ImportError:
-  print('Couldn\'t import Pillow, please intall it to use palette')
+from image import without_source
 
 def main():
   arguments = parse_args()
@@ -18,19 +14,20 @@ def main():
     imagick_output = generate_histogram(temp_file) 
     delete_file(temp_file)
   except:
-    print('Something went wrong with ImageMagick, is it installed correctly?')
+    print('Something went wrong with ImageMagick, is it installed correctly? Its version needs to be at least 7.0.9')
   else:
     output_lines = imagick_output.split('\n')
     parsed_colors = [parse_line(line) for line in output_lines]
     sorted_colors = sorted(parsed_colors, key=lambda l: int(l['frequency']), reverse=True)
 
-    size = 1000 if arguments.colors < 6 else arguments.colors * 200 
-    image = Image.new("RGB", (size, size), "#FFFFFF")
-
-    for i in range(len(sorted_colors)):
-      initialX = (size // arguments.colors) * i
-      finalX = (size //  arguments.colors) * (i + 1)
-      image.paste(sorted_colors[i]['hex'], [initialX, 0, finalX, size])
+    size = None
+    image = None
+    
+    if arguments.source:
+      pass
+    else:
+      size = 1000 if arguments.colors < 6 else arguments.colors * 200
+      image = without_source(size, arguments.colors, arguments.value, sorted_colors)
 
     try:
       output, extension = arguments.output.rsplit('.', 1)
