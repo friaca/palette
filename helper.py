@@ -11,4 +11,4 @@ def delete_file(filename):
   try:
     os.remove(filename)
   except OSError as oserrror:
-    print(f'[ERROR] {oserrror.filename} - {oserrror.strerror}')
+    print(f'Couldn\'t delete the file: {oserrror.filename} - {oserrror.strerror}')
