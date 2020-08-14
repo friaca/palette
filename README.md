@@ -18,7 +18,7 @@ pip install requirements.txt
 
 ## Usage
 
-```python pallete -i input [-c | --colors N] [-s | --with-source] -o output```
+```python pallete.py -i input [-c | --colors N] [-s | --with-source] -o output```
 
 - -c --colors: Defines the number of colors the palette will have, the default is 5.
 
