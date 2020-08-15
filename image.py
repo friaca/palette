@@ -31,8 +31,11 @@ def with_source(source_path, n_color, color_list):
   
   if source_image.size[0] > source_image.size[1]:
     size = (1500, 1000)
-  else:
+  elif source_image.size[0] < source_image.size[1]:
     size = (1000, 1500)
+  else:
+    pass
+  
 
   image = Image.new("RGB", size, "#FFFFFF")
   source_image.thumbnail((750, 500), Image.ANTIALIAS)
