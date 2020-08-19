@@ -2,7 +2,7 @@ import sys
 from helper import run_command, delete_file
 from parse import parse_line, parse_args
 from colorspaces import quantitize_image, generate_histogram
-from image import without_source, with_source, generate_palette
+from image import generate_palette
 
 def main():
   arguments = parse_args()
