@@ -18,12 +18,11 @@ pip install requirements.txt
 
 ## Usage
 
-```python pallete.py -i input [-c | --colors N] [-s | --with-source]  [-v | --values] -o output```
+```python pallete.py -i input [options...] -o output```
 
-- -c --colors: Defines the number of colors the palette will have, the default is 5.
-
-- -s --add-source: [Not working for now] If present, the output image will contain the source image
-
-- -v --values: Includes the hex value in every color block
-
-- -p --percentage: Instead of color blocks of equal widths, the blocks width is equivalent to the color's frequency 
+| Argument | Abbrev. | Default | Description |
+| ---    | ---     | ---     | ---         |
+| --colors| -c     | 5       | Number of dominant colors to return |
+| --add-source | -s | `False` | (Not working for now) If present, the output image will contain the source image |
+| --values | -v    | `False` | Includes the hex value in every color block (invalid if `-p` is present) |
+| --percentage | -p  | `False` | Instead of color blocks of equal widths, the blocks' width is equivalent to the color's frequency |
