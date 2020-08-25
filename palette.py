@@ -26,7 +26,7 @@ def main():
       output, extension = arguments.output.rsplit('.', 1)
       image.save(f'{output}.{extension}')
     except OSError as oserror:
-      print(f'Couldn\'t save the image for some reason\n{oserrror.strerror}') 
+      print(f'Couldn\'t save the image for some reason\n{oserror.strerror}') 
 
 if __name__ == '__main__':
   main()
