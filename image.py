@@ -26,27 +26,3 @@ def generate_palette(color_list, show_values, by_percentage):
       drawing.text((x, size - 75), color_list[i]['hex'], font=font, fill=fill)
 
   return new_image
-
-def with_source(source_path, n_color, color_list):
-  source_image = Image.open(source_path)
-  pos = (0, 0)
-  size = (0, 0)
-  thumbnail_size = (0, 0)
-  
-  if source_image.size[0] > source_image.size[1]:
-    size = (1200, 1000)
-    thumbnail_size = (1000, 1000)
-    # pos = ((size[0] // 2) - (thumbnail_size[0]), size[1] - thumbnail_size[1])
-    pos = (125, 125)
-    print(pos)
-  elif source_image.size[0] > source_image.size[1] or source_image.size[0] == source_image.size[1]:
-    size = (1000, 1500)
-    thumbnail_size = (750, 500)
-  
-
-  image = Image.new("RGB", size, "#FFFFFF")
-  source_image.thumbnail(thumbnail_size, Image.ANTIALIAS)
-
-  image.paste(source_image, pos)
-
-  return image
